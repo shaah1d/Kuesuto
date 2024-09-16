@@ -2,12 +2,12 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from '../Navbar'
+
 
 const page = () => {
     return (
         <>
-          <Navbar />
+         
           <div className="container mx-auto px-4 py-8 max-w-full sm:max-w-4xl">
           
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-primary">Let's delve deeper into how Kuesuto works and explore its user-friendly features:</h1>

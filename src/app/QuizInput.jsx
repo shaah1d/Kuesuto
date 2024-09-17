@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 function QuizInput({ onSubmitInput, isLoading }) {
     const [input, setInput] = useState('');
+    const [isLoad, setIsLoad] = useState(false);
 
     const handleChange = (e) => {
         setInput(e.target.value);
@@ -10,6 +11,7 @@ function QuizInput({ onSubmitInput, isLoading }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmitInput(input);
+        setIsLoad(true);
     };
 
     return (
@@ -34,6 +36,7 @@ function QuizInput({ onSubmitInput, isLoading }) {
             <button 
                 type="submit" 
                 className='btn btn-primary ml-4'
+                disabled={isLoad}
                 // disabled={isLoading}
             >
                 {isLoading ? "Loading..." : "Give it a shot"}

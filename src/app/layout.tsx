@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Footer from "./Footer";
 import "./globals.css";
 import { SessionProvider } from 'next-auth/react'
+import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -22,7 +23,9 @@ export default function RootLayout({
       <body className={inter.className}>
 
       {children}
-      <Footer /></body>
+      <Footer />
+      <Analytics /></body>
+
 
       </SessionProvider>
     </html>

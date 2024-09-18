@@ -107,7 +107,7 @@ Example: imput array
 
     const handleSubmitInput = (input) => {
         setIsLoading(true);
-        const genAI = new GoogleGenerativeAI('AIzaSyDvO1wNf6PYMJzVUIl-WNwP3E0PlEMXwV4'); // Replace with your actual API key
+        const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_KEY); // Replace with your actual API key
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const { prompt, prompt2 } = processInput(input);
@@ -183,7 +183,7 @@ Example: imput array
             // console.log('wrong questions: ', isWrong);
 
             if (qnum === data.questions.length - 2) {
-                const genAI = new GoogleGenerativeAI('AIzaSyDvO1wNf6PYMJzVUIl-WNwP3E0PlEMXwV4');
+                const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_KEY);
                 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
                 // Use processInput to get prompt2

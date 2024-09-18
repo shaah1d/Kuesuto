@@ -61,7 +61,7 @@ The topic of the quiz is:
 
                 try {
                     const jsonData = JSON.parse(responseText);
-                    console.log(jsonData);
+                  
                     setData(jsonData);
                     setError('');
                 } catch (parseError) {

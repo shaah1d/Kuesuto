@@ -180,7 +180,7 @@ Example: imput array
             setIsAnswerSubmitted(false);
             setSelectedOption('');
             setScoredisplay(null);
-            // console.log('wrong questions: ', isWrong);
+          
 
             if (qnum === data.questions.length - 2) {
                 const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_API_KEY);

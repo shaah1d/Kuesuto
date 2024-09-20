@@ -38,9 +38,9 @@ const Navbar: React.FC<NavbarProps> = ({ name, email, image }) => {
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            <li><Link href="/">Home</Link></li>
+            <li><a href="/">Home</a></li>
             <li><Link href="/how-it-works">How it works?</Link></li>
-            <li><a href="#about" onClick={scrollToAbout}>About</a></li>
+            <li><Link href="/about">About</Link></li> 
           </ul>
         </div>
       </div>

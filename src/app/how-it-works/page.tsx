@@ -5,11 +5,34 @@ import Link from 'next/link'
 
 
 const page = () => {
-    return (
-        <>
-         
-          <div className="container mx-auto px-4 py-8 max-w-full sm:max-w-4xl">
-          
+   return (
+          <>
+    <div className="w-full">
+        <div className="navbar bg-base-100">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost font-bold"
+              >
+                Kuesuto
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li><a href="/">Home</a></li>
+                <li><Link href="/how-it-works">How it works?</Link></li>
+                <li><Link href="/about">About</Link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+                 <div className="container mx-auto px-4 py-8 max-w-full sm:max-w-4xl">
+     
+
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-primary">Let's delve deeper into how Kuesuto works and explore its user-friendly features:</h1>
 
 <h2 className="text-3xl font-semibold mb-4 text-primary">The Magic Behind Kuesuto</h2>
@@ -106,7 +129,7 @@ const page = () => {
 </p>
         </div>
         </>
-    )
+)
 }
 
 export default page

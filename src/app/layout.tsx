@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import "./globals.css";
 import { SessionProvider } from 'next-auth/react'
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -24,7 +25,8 @@ export default function RootLayout({
 
       {children}
       <Footer />
-      <Analytics /></body>
+      <Analytics />
+      <SpeedInsights /></body>
 
 
       </SessionProvider>

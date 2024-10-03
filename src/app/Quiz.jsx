@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import QuizInput from './QuizInput';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import {
@@ -7,6 +7,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion"
+import confetti from 'canvas-confetti';
 
 function MyComponent() {
     const [data, setData] = useState('');
@@ -20,6 +21,14 @@ function MyComponent() {
     const [isLoading, setIsLoading] = useState(false);
     const [isWrong, setIsWrong] = useState([]);
     const [info, setInfo] = useState([]);
+    useEffect(() => {
+       if(quizFinished){
+        confetti({
+          particleCount: 150,
+          spread: 130,
+          origin: { y: 0.6 },
+        });
+      }}, [quizFinished]);
 
     const processInput = (input) => {
         const defaultPrompt = `
@@ -102,6 +111,7 @@ Example: imput array
         return { prompt: `${defaultPrompt} : ${input}`, prompt2 };
 
     };
+ 
 
     const handleSubmitInput = (input) => {
         setIsLoading(true);
@@ -158,6 +168,7 @@ Example: imput array
         if (selectedOption === correctAnswer) {
             setScoredisplay(true);
             setScore(score + 1);
+  
         } else {
             setScoredisplay(false);
             setIsWrong([...isWrong, {
@@ -217,22 +228,25 @@ Example: imput array
                 <div className="w-[90%] max-w-4xl mx-auto mt-8">
                     {quizFinished ? (
                         <>
-                            <h1 className='text-center text-xl font-bold'>Your score was: {score}</h1>
+                            <h1 className='text-4xl font-bold text-center mb-6 text-black'>Quiz Results</h1>
+                            <h1 className='text-6xl font-bold text-center mb-6 text-green-600'>{score} / 10</h1>
+                            <p className="text-xl text-center text-gray-600">Great effort!</p>
 
-                            <h1 className='text-center text-xl font-bold'>Well done! Here are some topics you should focus on: </h1>
+
+                            <h1 className=' text-2xl font-bold mt-3 text-green-700'>Topics to Review: </h1>
                             
-                            <Accordion type="single" collapsible className="bg-base-200 p-4 rounded-lg mt-5 mb-5 gap-4">
+                            <Accordion type="single" collapsible className="bg-green-10 rounded-lg mt-2 mb-5 p-4">
                                 {info.map((item, index) => (
                                     <AccordionItem value={`item-${index + 1}`} key={index}>
-                                        <AccordionTrigger>{item.title}</AccordionTrigger>
+                                        <AccordionTrigger className='text-green-800 hover:text-green-600 text-xl'>{item.title}</AccordionTrigger>
                                         <AccordionContent>
-                                            <p>{item.explanation}</p>
+                                            <p className='text-green-700 text-lg'>{item.explanation}</p>
                                         </AccordionContent>
                                     </AccordionItem>
                                 ))}
                             </Accordion>
 
-                            <a href="/" className='btn btn-primary'>Give another quiz</a>
+                            <a href="/" className='btn btn-primary w-[100%]'>Give another quiz</a>
                         </>
                     ) : (
                         <div className="space-y-5">

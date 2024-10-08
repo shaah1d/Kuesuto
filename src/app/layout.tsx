@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title: "Kuesuto",
+  title: "Kuesuto: AI-powered quizzes on any topic, anytime!",
   description: "Welcome to Kuesuto, the revolutionary platform that transforms the way you learn and test your knowledge! Imagine having the power to create quizzes on literally anything under the sun, from the depths of ancient history to the latest pop culture phenomena. That's exactly what Kuesuto offers, and so much more!",
 };
 

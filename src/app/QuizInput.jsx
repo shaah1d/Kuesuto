@@ -50,7 +50,7 @@ function QuizInput({ onSubmitInput, isLoading }) {
   <img 
     src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=495106&theme=dark" 
     alt="Kuesuto - Kuesuto: AI-powered quizzes on any topic, anytime! | Product Hunt" 
-    style={{ width: '250px', height: '54px', marginTop: '2rem' }} 
+    style={{ width: '250px', height: '54px', marginTop: '1rem' }} 
     width="62.5" 
     height="13.5" 
   />

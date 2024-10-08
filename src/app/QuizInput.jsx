@@ -48,13 +48,14 @@ function QuizInput({ onSubmitInput, isLoading }) {
   rel="noopener noreferrer"
 >
   <img 
-    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=495106&theme=neutral" 
-    alt="Kuesuto: AI-powered quizzes on any topic, anytime! | Product Hunt" 
-    style={{ width: '250px', height: '54px', marginTop: '1rem' }} 
-    width="125" 
-    height="27" 
+    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=495106&theme=dark" 
+    alt="Kuesuto - Kuesuto: AI-powered quizzes on any topic, anytime! | Product Hunt" 
+    style={{ width: '250px', height: '54px', marginTop: '2rem' }} 
+    width="62.5" 
+    height="13.5" 
   />
 </a>
+
 
             </div>
            </div>

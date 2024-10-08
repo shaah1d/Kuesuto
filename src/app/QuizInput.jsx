@@ -42,6 +42,20 @@ function QuizInput({ onSubmitInput, isLoading }) {
                 {isLoading ? "Loading..." : "Give it a shot"}
             </button>
         </form>
+        <a 
+  href="https://www.producthunt.com/posts/kuesuto?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-kuesuto" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <img 
+    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=495106&theme=neutral" 
+    alt="Kuesuto: AI-powered quizzes on any topic, anytime! | Product Hunt" 
+    style={{ width: '250px', height: '54px', marginTop: '1rem' }} 
+    width="125" 
+    height="27" 
+  />
+</a>
+
             </div>
            </div>
            <div className='sm:col-span-5 h-full overflow-hidden'>

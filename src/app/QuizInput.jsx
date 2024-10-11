@@ -19,7 +19,7 @@ function QuizInput({ onSubmitInput, isLoading }) {
            <div className='sm:col-span-7 flex justify-center items-center h-full'>
             <div className='p-10'>
             <h1 className='text-6xl font-bold'>Quiz yourself on anything.</h1>
-            <p className='text-lg mt-3'><span className='font-bold'>Kuesuto</span> harnesses the power of AI to tailor quizzes that suit your interests and test your understanding on any topic you choose. Whether you're exploring new subjects or honing existing skills, our dynamic quizzes are designed to challenge and engage you.</p>
+            <p className='text-lg mt-3'>Create engaging quizzes effortlessly with Kuesuto. Discover a versatile platform for testing knowledge on any topic, from ancient history to modern trends. Start creating today!</p>
             <p className='text-md mt-2 mb-2 font-bold'>Try it out!</p>
             <form onSubmit={handleSubmit} className='flex'>
                 <input

@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link';
@@ -61,7 +62,11 @@ const Navbar: React.FC<NavbarProps> = ({ name, email, image }) => {
           </div>
         ) : (
           <div>
-            <Link href="/api/auth/signin" className="btn btn-sm btn-primary mr-2">Sign In</Link>
+          <Link href="/api/auth/signin" className="relative inline-block overflow-hidden group">
+    <span className="block translate-y-0 group-hover:-translate-y-full transition-transform duration-500">
+      Login &rarr;
+    </span>
+  </Link>
        
           </div>
         )}

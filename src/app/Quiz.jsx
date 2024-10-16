@@ -115,7 +115,7 @@ Example: imput array
 
     const handleSubmitInput = (input) => {
         setIsLoading(true);
-        const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY); 
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY); 
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const { prompt, prompt2 } = processInput(input);
@@ -192,7 +192,7 @@ Example: imput array
           
 
             if (qnum === data.questions.length - 2) {
-                const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY);
+                const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
                 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
                 // Use processInput to get prompt2

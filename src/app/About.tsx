@@ -72,6 +72,26 @@ export default function About() {
   ];
   return (
     <div className="w-full">
+        <div className="navbar bg-base-100">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost font-bold"
+          >
+            Kuesuto
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            <li><a href="/">Home</a></li>
+            <li><Link href="/how-it-works">How it works?</Link></li>
+            <li><Link href="/about">About</Link></li> 
+          </ul>
+        </div>
+      </div>
+      </div>
       <Timeline data={data} />
     </div>
   );

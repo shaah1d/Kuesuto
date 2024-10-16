@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react"
 import { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import Quiz from './Quiz'
-import About from './About'
+import About from "./About"
 
 export default function Component() {
   const { data: session, status } = useSession()

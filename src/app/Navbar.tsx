@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,8 +10,20 @@ interface NavbarProps {
   image: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ name, email, image }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const { data: session, status } = useSession()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [image, setImage] = useState('')
+
+  useEffect(() => {
+    if (status === "authenticated" && session?.user) {
+      setName(session.user.name ?? '');
+      setEmail(session.user.email ?? '');
+      setImage(session.user.image ?? '');
+    
+    }
+  }, [status, session])
   const [isHovering, setIsHovering] = useState(false);
   console.log(image)
 
@@ -24,7 +36,7 @@ const Navbar: React.FC<NavbarProps> = ({ name, email, image }) => {
   };
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 fixed">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -46,32 +58,41 @@ const Navbar: React.FC<NavbarProps> = ({ name, email, image }) => {
         </div>
       </div>
       <div className="navbar-end">
-        {status === "authenticated" ? (
-          <div className="dropdown">
-            <div
-              tabIndex={0}
-              role="button"
-              className="text-xs font-bold p-2 rounded-full bg-green-400" >
-              {email}
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-              <li><a onClick={() => signOut()}>Logout</a></li>
-            </ul>
+  {status === "authenticated" ? (
+    <div className="dropdown dropdown-end"> {/* Changed to `dropdown-end` */}
+      <div
+        tabIndex={0}
+        role="button"
+        className="text-xs font-bold p-2 rounded-full"
+      >
+        <div className="avatar">
+          <div className="ring-green-500 ring-offset-base-100 w-9 rounded-full ring ring-offset-2">
+            <img src={image} />
           </div>
-        ) : (
-          <div>
-          <Link href="/api/auth/signin" className="relative inline-block overflow-hidden group">
-    <span className="block translate-y-0 group-hover:-translate-y-full transition-transform duration-500">
-      Login &rarr;
-    </span>
-  </Link>
-       
-          </div>
-        )}
+        </div>
       </div>
+      <ul
+        tabIndex={0}
+        className="menu menu-sm dropdown-content bg-base-100 text-center rounded-box z-[1] mt-3 w-30 p-2 mr-4 shadow right-0" 
+      >
+        <li>
+          <a onClick={() => signOut()}>Logout</a>
+        </li>
+      </ul>
     </div>
+  ) : (
+    <div>
+      <Link href="/api/auth/signin" className="relative inline-block overflow-hidden group">
+        <span className="block translate-y-0 group-hover:-translate-y-full transition-transform duration-500">
+          Login &rarr;
+        </span>
+      </Link>
+    </div>
+  )}
+</div>
+
+      </div>
+  
   )
 }
 

@@ -24,7 +24,7 @@ export default function RootLayout({
       <SessionProvider>
        
       <body className={inter.className}>
-
+     <Navbar />
       {children}
       <Footer />
       <Analytics />

@@ -3,27 +3,8 @@ import Link from "next/link"
 
 export default function Component() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white py-12 px-4 sm:px-6 lg:px-8">
-          <div className="navbar ">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost font-bold"
-          >
-            Kuesuto
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            <li><a href="/">Home</a></li>
-            <li><Link href="/how-it-works">How it works?</Link></li>
-            <li><Link href="/about">About</Link></li> 
-          </ul>
-        </div>
-      </div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b  py-12 px-4 sm:px-6 lg:px-8">
+      
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-extrabold text-center text-green-800 mb-8">The Magic Behind Kuesuto</h1>
         

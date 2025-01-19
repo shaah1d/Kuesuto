@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Footer from "./Footer";
+import Footer from "../components/layout/Footer";
 import "./globals.css";
 import { SessionProvider } from 'next-auth/react'
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from '@vercel/speed-insights/next';
 const inter = Inter({ subsets: ["latin"] });
-import Navbar from "./Navbar";
+
+import Navbar from "../components/layout/Navbar";
 
 
 export const metadata: Metadata = {

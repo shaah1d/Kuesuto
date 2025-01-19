@@ -1,9 +1,9 @@
 "use client"
 import { useSession } from "next-auth/react"
 import { useState, useEffect } from 'react'
-import Navbar from './Navbar'
-import Quiz from './Quiz'
-import About from "./About"
+import Navbar from '../components/layout/Navbar'
+import Quiz from '../components/pages/Quiz'
+import About from "../components/pages/About"
 
 export default function Component() {
 
@@ -13,7 +13,7 @@ export default function Component() {
      
       <main className="flex-grow flex flex-col w-full">
         <Quiz />
-        <About />
+        {/* <About /> */}
       </main>
     </div>
   )

@@ -4,6 +4,7 @@ import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { Button } from "../ui/button";
 interface NavbarProps {
   name: string;
   email: string;
@@ -25,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     }
   }, [status, session])
   const [isHovering, setIsHovering] = useState(false);
-  console.log(image)
+
 
   const scrollToAbout = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -36,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 fixed">
+    <div className="navbar bg-base-100 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -52,8 +53,8 @@ const Navbar: React.FC<NavbarProps> = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
             <li><a href="/">Home</a></li>
-            <li><Link href="/how-it-works">How it works?</Link></li>
-            <li><Link href="/about">About</Link></li> 
+            <li><Link href="/pages/how-it-works">How it works?</Link></li>
+            <li><Link href="/pages/about">About</Link></li> 
           </ul>
         </div>
       </div>
@@ -82,10 +83,9 @@ const Navbar: React.FC<NavbarProps> = () => {
     </div>
   ) : (
     <div>
-      <Link href="/api/auth/signin" className="relative inline-block overflow-hidden group">
-        <span className="block translate-y-0 group-hover:-translate-y-full transition-transform duration-500">
-          Login &rarr;
-        </span>
+      <Link href="/api/auth/signin" className="relative inline-block overflow-hidden group mr-4">
+    
+      Login
       </Link>
     </div>
   )}

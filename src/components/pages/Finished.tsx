@@ -17,6 +17,12 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 
 interface FinishedProps {
@@ -36,7 +42,7 @@ const chartConfig = {
   },
   chrome: {
     label: "Correct",
-    color: "#4f772d",
+    color: " #28a745",
   },
 
   other: {
@@ -58,87 +64,70 @@ function Finished({ score , incorrectAnswers}: FinishedProps) {
   }, [])
  
     return (
-   <div className="overflow-hidden">
-        
-      <CardHeader className="items-center pb-0">
-        <CardTitle>Pie Chart - Your Score</CardTitle>
-      
-      </CardHeader>
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
-          <PieChart>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Pie
-              data={chartData}
-              dataKey="questions"
-              nameKey="browser"
-              innerRadius={60}
-              strokeWidth={5}
-            >
-              <Label
-                content={({ viewBox }) => {
-                  if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                    return (
-                      <text
-                        x={viewBox.cx}
-                        y={viewBox.cy}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                      >
-                        <tspan
-                          x={viewBox.cx}
-                          y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
-                        >
-                          {totalVisitors.toLocaleString()}
-                        </tspan>
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
-                        >
-                  Questions
-                        </tspan>
-                      </text>
-                    )
-                  }
-                }}
-              />
-            </Pie>
-          </PieChart>
-        </ChartContainer>
-      </CardContent>
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+     
+        <CardHeader className="text-center">
+          <CardTitle>Quiz Results</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ChartContainer config={chartConfig} className="mx-auto aspect-square max-h-[250px]">
+            <PieChart>
+              <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+              <Pie data={chartData} dataKey="questions" nameKey="browser" innerRadius={60} strokeWidth={5}>
+                <Label
+                  content={({ viewBox }) => {
+                    if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                      return (
+                        <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
+                          <tspan x={viewBox.cx} y={viewBox.cy} className="fill-foreground text-3xl font-bold">
+                            {score}
+                          </tspan>
+                          <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-foreground text-sm">
+                            Correct
+                          </tspan>
+                        </text>
+                      )
+                    }
+                  }}
+                />
+              </Pie>
+            </PieChart>
+          </ChartContainer>
+        </CardContent>
+    
 
-
-      {incorrectAnswers.map((answer, index) => (
-          <Card key={index} className= "border-black-500 mt-2">
-            <CardHeader>
-              <CardTitle className="text-lg">{answer.question}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="mb-2">
-                <span className="font-semibold">Your answer:</span> {answer.userAnswer}
-              </p>
-              <p className="mb-2">
-                <span className="font-semibold">Correct answer:</span> {answer.correctAnswer}
-              </p>
-              <p className="mt-4 p-4 bg-gray-100 rounded-md">
-                <span className="font-semibold text-green-500">Explanation:</span> {answer.explanation}
-              </p>
-            </CardContent>
-          </Card>
-    ))}
-
+      {incorrectAnswers.length > 0 && (
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Incorrect Answers</h2>
+          <Accordion type="single" collapsible className="w-full">
+            {incorrectAnswers.map((answer, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left">{answer.question}</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <p>
+                      <span className="font-semibold">Your answer:</span> {answer.userAnswer}
+                    </p>
+                    <p>
+                      <span className="font-semibold">Correct answer:</span> {answer.correctAnswer}
+                    </p>
+                    <div className="bg-muted p-4 rounded-md">
+                      <p className="font-semibold text-green-500 mb-2">Explanation:</p>
+                      <p>{answer.explanation}</p>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      )}
+  <div className="text-center">
     <button className="btn btn-primary mt-3"
     onClick={() => window.location.reload()}>
       Give another shot &rarr;
     </button>
+    </div>
       </div>
       );
 }

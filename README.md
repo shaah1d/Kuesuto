@@ -3,5 +3,6 @@
 
  - [x] images for socials
  - [x] meta tags added
- - [ ] sitemap.xml
+ - [x] sitemap.xml
+ - [x] robots.txt
  - [x] google site verification

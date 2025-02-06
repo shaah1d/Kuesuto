@@ -30,7 +30,7 @@ export const metadata = {
     images: ["/seo.jpg"], 
   },
   other: {
-    "google-site-verification": "PNPubIbBFBlKdFdiJ2FTQB0tHZjxHE-KecYJ-ZBGpTo",
+    "google-site-verification": "wckTkQpa6BuSEvMGYcLa-lXNAuEWxkoBIjTo4-SYiNk",
   },
 };
 

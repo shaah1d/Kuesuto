@@ -16,59 +16,127 @@
 
 # Kuesuto
 
-**Kuesuto** is an AI-powered quiz generator that lets you create quizzes on *anything* — from world history and anime to coding or astronomy. Just type a topic, and Kuesuto builds a custom 10-question quiz for you, complete with explanations for every answer.
+Kuesuto is a web application that generates quizzes on user-specified topics using the Google Gemini AI model. Users enter a topic, optionally with a difficulty level (easy, medium, hard), and the app creates a 10-question multiple-choice quiz in JSON format. The quiz includes questions, options, correct answers, and explanations. Authentication is handled with NextAuth for Google and GitHub providers. The frontend uses Next.js with Tailwind CSS and shadcn/ui components.
 
-This project was built using **Next.js**, **TailwindCSS**, and **Google’s Gemini API**.
+## Features
 
----
+- Topic-based quiz generation via AI prompt.
+- Support for difficulty levels in user input.
+- 10 questions per quiz with 4 options each.
+- Score tracking and explanations after submission.
+- User authentication and session management.
+- Responsive UI with dark mode support.
+- SEO setup with sitemap and meta tags.
 
-##  What It Does
+## Setup
 
-- Type any topic — Kuesuto will generate a quiz in seconds.
-- Every quiz includes:
-  - 10 unique questions
-  - 4 options each
-  - The correct answer
-  - An explanation to help you learn
-- You can log in with **Google** or **GitHub** to save your session and track progress.
+1. Clone the repository:
+   ```
+   git clone <repository-url>
+   cd shaah1d-kuesuto
+   ```
 
----
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-## How It Works
+3. Create a `.env.local` file in the root directory and add the following variables:
+   ```
+   GEMINI_API_KEY=your_gemini_api_key
+   GOOGLE_ID=your_google_client_id
+   GOOGLE_SECRET=your_google_client_secret
+   GITHUB_ID=your_github_client_id
+   GITHUB_SECRET=your_github_client_secret
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXTAUTH_URL=http://localhost:3000
+   ```
 
-1. You enter a topic (like *Bioluminescent sea creatures* or *JavaScript basics*).
-2. The app sends your request to **Gemini 1.5 Flash**.
-3. The AI returns a quiz in structured JSON format.
-4. The frontend displays the questions one by one.
-5. You answer, get instant feedback, and see explanations after every question.
+4. Run the development server:
+   ```
+   npm run dev
+   ```
 
----
+5. Open http://localhost:3000 in your browser.
 
-##  Tech Stack
-
-- **Frontend:** Next.js 14 + TypeScript  
-- **Styling:** Tailwind CSS + DaisyUI + shadcn/ui  
-- **Auth:** NextAuth (Google & GitHub)  
-- **AI:** Google Generative AI (Gemini 1.5 Flash)  
-- **Animations:** Framer Motion + Confetti 
-- **Charts:** Recharts  
-
----
-
-##  Setup
-Clone the repo and install dependencies:
-
-```bash
-git clone https://github.com/shaah1d/kuesuto.git
-cd kuesuto
-npm install
+For production builds:
 ```
-Create a .env.local file in the root directory with the following keys:
-```bash
-GEMINI_API_KEY=your_gemini_api_key
-GOOGLE_ID=your_google_client_id
-GOOGLE_SECRET=your_google_secret
-GITHUB_ID=your_github_client_id
-GITHUB_SECRET=your_github_secret
-NEXTAUTH_SECRET=your_random_secret
+npm run build
+npm start
 ```
+
+## File Structure
+
+```
+shaah1d-kuesuto/
+├── README.md
+├── auth.ts
+├── components.json
+├── middleware.ts
+├── next.config.mjs
+├── package.json
+├── postcss.config.mjs
+├── tailwind.config.ts
+├── tsconfig.json
+├── .eslintrc.json
+├── public/
+│   ├── robots.txt
+│   └── sitemap.xml
+└── src/
+    ├── app/
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    │   ├── api/
+    │   │   ├── auth/
+    │   │   │   ├── [...nextauth]/
+    │   │   │   │   └── route.ts
+    │   │   │   └── signin/
+    │   │   │       └── page.tsx
+    │   │   └── quiz/
+    │   │       └── route.ts
+    │   └── pages/
+    │       ├── about/
+    │       │   └── page.tsx
+    │       └── how-it-works/
+    │           └── page.tsx
+    ├── components/
+    │   ├── forms/
+    │   │   ├── Auth.tsx
+    │   │   └── QuizInput.tsx
+    │   ├── layout/
+    │   │   ├── Footer.tsx
+    │   │   └── Navbar.tsx
+    │   ├── pages/
+    │   │   ├── About.tsx
+    │   │   ├── Finished.tsx
+    │   │   └── Quiz.jsx
+    │   └── ui/
+    │       ├── accordion.tsx
+    │       ├── avatar.tsx
+    │       ├── badge.tsx
+    │       ├── button.tsx
+    │       ├── card.tsx
+    │       ├── chart.tsx
+    │       ├── form.tsx
+    │       ├── input.tsx
+    │       ├── label.tsx
+    │       ├── navigation-menu.tsx
+    │       ├── scroll-area.tsx
+    │       ├── select.tsx
+    │       ├── separator.tsx
+    │       └── timeline.tsx
+    └── lib/
+        └── utils.ts
+```
+
+## Tech Stack
+
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS with daisyUI and shadcn/ui
+- NextAuth.js for authentication
+- Google Gemini API for quiz generation
+- React Hook Form and Zod for forms
+- Framer Motion for animations
+- Vercel Analytics and Speed Insights

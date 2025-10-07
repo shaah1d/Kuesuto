@@ -1,8 +1,1 @@
-![image](https://github.com/user-attachments/assets/10e51d7e-e173-4a97-80da-1a05bb804304)
-
-
- - [x] images for socials
- - [x] meta tags added
- - [x] sitemap.xml
- - [x] robots.txt
- - [x] google site verification
+[<img width="1920" height="1080" alt="githubkeusuto" src="https://github.com/user-attachments/assets/5101a8be-5242-48ff-80ca-69ccf1c962e6" />](https://kuesuto.vercel.app)

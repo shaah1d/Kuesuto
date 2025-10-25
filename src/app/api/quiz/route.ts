@@ -2,12 +2,13 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+export const runtime = "edge"; 
 
 export async function POST(request: Request) {
     try {
         const { topic } = await request.json();
 
-        // Validate input
+       
         if (!topic || typeof topic !== 'string') {
             throw new Error('Invalid topic provided');
         }
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
         const result = await model.generateContent(prompt);
         const responseText = result.response.text();
 
-        // Clean and validate JSON response
+  
         try {
             const cleanedResponseText = responseText.replace(/```json|```/g, '').trim();
             const quizData = JSON.parse(cleanedResponseText);

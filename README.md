@@ -140,3 +140,8 @@ shaah1d-kuesuto/
 - React Hook Form and Zod for forms
 - Framer Motion for animations
 - Vercel Analytics and Speed Insights
+
+## License
+
+This project is licensed under the Apache License 2.0 — see the [LICENSE](./LICENSE) file for details.
+
